@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %} 
+{% block content %}
+<h1><b>Название: </b>{{ feature.title }}</h1>
+<p><b>Проект: </b>П{{ feature.project }}</p>
+<p><b>Статус: </b>{{ feature.status }}</p>
+<p><b>Приоритет: </b>{{ feature.priority }}</p>
+<p><b>Дата создания: </b>{{ feature.created_at }}</p>
+<p><b>Дата обновления: </b>{{ feature.updated_at }}</p>
+
+{% endblock %}

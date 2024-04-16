@@ -1,13 +1,25 @@
-from django.http import HttpResponse
-from django.urls import reverse
+from django.shortcuts import render
+from django.views.generic import View, ListView, DetailView
+from .models import Project, Task
 
 
-def index(request):
-    another_page_url = reverse("tasks:another_page")
-    quality_control_main = reverse("quality_control:index")
-    html = f"<h1>Страница приложения tasks</h1><a href='{another_page_url}'>Перейти на другую страницу</a> <a href='{quality_control_main}'>Главная страница quality control</a>"
-    return HttpResponse(html)
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "tasks/index.html")
 
 
-def another_page(request):
-    return HttpResponse("Это другая страница приложения tasks.")
+class ProjectsListView(ListView):
+    model = Project
+    template_name = "tasks/projects_list.html"
+
+
+class ProjectDetailView(DetailView):
+    model = Project
+    pk_url_kwarg = "project_id"
+    template_name = "tasks/project_detail.html"
+
+
+class TaskDetailView(DetailView):
+    model = Task
+    pk_url_kwarg = "task_id"
+    template_name = "tasks/task_detail.html"

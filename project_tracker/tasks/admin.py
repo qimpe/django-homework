@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Project, Task
-from quality_control.models import BugReport, FutureRequest
+from quality_control.models import BugReport, FeatureRequest
 
 
 class BugReportInline(admin.TabularInline):
@@ -13,7 +13,7 @@ class BugReportInline(admin.TabularInline):
 
 
 class FutureRequestInline(admin.TabularInline):
-    model = FutureRequest
+    model = FeatureRequest
     extra = 0
     fields = ("title", "description", "status", "created_at", "updated_at")
     readonly_fields = ("created_at", "updated_at")

@@ -29,7 +29,7 @@ class BugReport(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-class FutureRequest(models.Model):
+class FeatureRequest(models.Model):
     STATUS_CHOICES = [
         ("Consideration", "На рассмотрении"),
         ("Accepted", "Принято"),

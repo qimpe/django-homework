@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BugReport, FutureRequest
+from .models import BugReport, FeatureRequest
 
 
 # Register your models here.
@@ -44,8 +44,8 @@ class BugReportAdmin(admin.ModelAdmin):
     change_status.short_description = "Change status to 'Completed'"
 
 
-@admin.register(FutureRequest)
-class FutureRequestAdmin(admin.ModelAdmin):
+@admin.register(FeatureRequest)
+class FeatureRequestAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "project",
@@ -67,7 +67,7 @@ class FutureRequestAdmin(admin.ModelAdmin):
     list_editable = ("status", "priority")
     readonly_fields = ("created_at", "updated_at")
     fieldsets = (
-        ("Title", {"fields": ("title",)}),
+        ("Title and description", {"fields": ("title", "description")}),
         ("Task and Projects", {"fields": ("task", "project")}),
         ("Status and Priority", {"fields": ("status", "priority")}),
         ("Create/update date", {"fields": ("created_at", "updated_at")}),
