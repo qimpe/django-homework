@@ -1,10 +1,27 @@
 {% extends 'base/base.html' %} 
 {% block content %}
 <h1><b>Название: </b>{{ bug.title }}</h1>
-<p><b>Проект: </b>П{{ bug.project }}</p>
+<hr>
+<p><a href="{% url 'quality_control:bug_update' bug_id=bug.id %}">Изменить Bug Report</a></p>
+<p><a href="{% url 'quality_control:bug_delete' bug.id %}"onclick="return confirm('Вы уверены, что хотите удалить этот проект?');">Удалить Bug Report</a></p>
+<div>
+    <h2>О Проекте</h2>
+    <p><b>Название: </b><a href="{% url 'tasks:project_detail' bug.project.id %}">{{ bug.project.name }}</a></p>
+    <p><b>Описание: </b>{{ bug.project.description }}</p>
+    <hr>
+</div>
+<div>
+    <h2>О задачах </h2> 
+    <p><b>Название: </b><a href="{% url 'tasks:task_detail' bug.project.id bug.task.id %}">{{ bug.task.name }}</a></p>
+    <p><b>Описание: </b>{{ bug.task.description }}</p>
+    <p><b>Выполняет </b>{{ bug.task.assignee }}</p>
+    <hr>
+</div>
+<h2>Дополнительно О Bug</h2>
 <p><b>Статус: </b>{{ bug.status }}</p>
+<p><b>Описание: </b>{{ bug.description }}</p>
 <p><b>Приоритет: </b>{{ bug.priority }}</p>
 <p><b>Дата создания: </b>{{ bug.created_at }}</p>
 <p><b>Дата обновления: </b>{{ bug.updated_at }}</p>
-
+<hr>
 {% endblock %}

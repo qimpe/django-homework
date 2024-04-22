@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h1>Создать Feature Request</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+<button type="submit">Создать Feature Request</button>
+</form>
+{% endblock %}

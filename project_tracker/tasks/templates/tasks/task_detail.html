@@ -1,7 +1,15 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<a href="{% url 'tasks:update_task' project_id=task.project.id task_id=task.id %}">Изменить задачу</a>
+<p><a href="{% url 'tasks:delete_task' project_id=task.project.id task_id=task.id %}" onclick="return confirm('Вы уверены, что хотите удалить эту задачу?');">Удалить задачу</a></p>
+
     <h1>Название: {{ task.name }}</h1>
     <p>Описание: {{ task.description }}</p>
+    <p>Стату: {{ task.status }}</p>
+    <p>Выполняет: {{ task.assignee }}</p>
+    <p>Проект: {{ task.project }}</p>
+    <p>Создано: {{ task.created_at }}</p>
+    <p>Обновлено: {{ task.updated_at }}</p>
 
 {% endblock %}

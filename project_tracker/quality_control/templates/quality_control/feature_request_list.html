@@ -1,6 +1,8 @@
 {% extends 'base/base.html' %} 
 {% block content %}
+
 <h1>Список Feature requests</h1>
+<a href="{% url 'quality_control:feature_create' %}">создать Feature Request</a>
 <ul>
   {% for feature in features %}
   <li>
